@@ -1,0 +1,134 @@
+$font-stack-1: "Lucida Console", "Lucida Sans Typewriter", monaco, "Bitstream Vera Sans Mono", monospace;
+
+@mixin radial-gradient-1($shape, $color-1, $color-2) {
+    background-image: -webkit-radial-gradient($shape, $color-1, $color-2);
+    background-image: -moz-radial-gradient($shape, $color-1, $color-2);
+    background-image: -o-radial-gradient($shape, $color-1, $color-2);
+    background-image: -ms-radial-gradient($shape, $color-1, $color-2);
+    background-image: radial-gradient($shape, $color-1, $color-2);
+}
+
+@mixin linear-gradient-1($angle, $color-1, $color-2) {
+    background-image: -webkit-linear-gradient($angle, $color-1, $color-2);
+    background-image: -moz-linear-gradient($angle, $color-1, $color-2);
+    background-image: -o-linear-gradient($angle, $color-1, $color-2);
+    background-image: -ms-linear-gradient($angle, $color-1, $color-2);
+    background-image: linear-gradient($angle, $color-1, $color-2);
+}
+
+@mixin border-radius-1($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -o-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin opacity-1($value) {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $value + ")";
+    filter: alpha(opacity=$value);
+    opacity: $value/100;
+}
+
+@mixin transform-scale($value1, $value2) {
+    -webkit-transform: scale($value1, $value2);
+    -moz-transform: scale($value1, $value2);
+    -ms-transform: scale($value1, $value2);
+    -o-transform: scale($value1, $value2);
+    transform: scale($value1, $value2);
+}
+
+@keyframes blink {
+    to {
+        color: transparent;
+    }
+}
+
+@-webkit-keyframes blink {
+    to {
+        color: transparent;
+    }
+}
+
+%vertical-align-element {
+    margin: 0 auto;
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+body {
+    display: flex;
+    flex-wrap: wrap;
+    background: #1e88e5;
+    @include radial-gradient-1(circle, #1e88e5, #3949ab);
+    font-size: 16px;
+}
+
+.drop-zone {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 200px;
+    width: 100%;
+}
+
+.desktop-icon {
+    display: block;
+    text-decoration: none;
+    margin: 50px 0 0 50px;
+}
+
+.terminal .shell {
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 100px;
+    @include border-radius-1(10px);
+    @include linear-gradient-1(180deg, #efefef, #8e8e8e);
+}
+
+.terminal .window {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    width: 90%;
+    height: 90%;
+    @include border-radius-1(10px);
+    @include linear-gradient-1(180deg, #333, #000);
+}
+
+.terminal .window .prompt-text {
+    display: flex;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.terminal .window .prompt-text .chevron {
+    display: block;
+    width: 40%;
+    height: 40%;
+    color: #efefef;
+    @include transform-scale(1, 2);
+}
+
+.terminal .window .prompt-text .underscore {
+    display: block;
+    width: 40%;
+    height: 40%;
+    color: #efefef;
+    animation: blink 1s infinite;
+    @include transform-scale(1.5, 1);
+}
+
+.terminal .label {
+    width: 100%;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 0;
+}
